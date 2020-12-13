@@ -12,6 +12,7 @@ import RegisterView from "src/views/auth/RegisterView";
 import SettingsView from "src/views/settings/SettingsView";
 import Report from "src/containers/Report";
 import Timeactivity from "src/containers/Timeactivity";
+//import route
 
 const routes = [
   {

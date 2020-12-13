@@ -6,6 +6,9 @@ import autoTable from "jspdf-autotable";
 import axios from "axios";
 import { makeStyles, Grid } from "@material-ui/core";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getReportData } from "../redux/actions/reportActions";
+
 const useStyles = makeStyles({
   root: {
     margin: 5,
@@ -24,70 +27,13 @@ const headers = [
   { label: "Billable", key: "billable" },
 ];
 
-const rows = [
-  {
-    activity: "11/01/2020",
-    calories: "Cosmas Majachani",
-    fat: "Off-Shore:No of Hours Worked",
-    carbs: "student moduke",
-    protein: 4.0,
-    billable: "Yes",
-  },
-  {
-    activity: "11/01/2020",
-    calories: "Cosmas Majachani",
-    fat: "Off-Shore:UI Services",
-    carbs: "student moduke",
-    protein: 6.0,
-    billable: "Yes",
-  },
-  {
-    activity: "11/01/2020",
-    calories: "Cosmas Majachani",
-    fat: "Off-Shore:No of Hours Worked",
-    carbs: "student moduke",
-    protein: 9.0,
-    billable: "No",
-  },
-  {
-    activity: "11/01/2020",
-    calories: "Cosmas Majachani",
-    fat: "Off-Shore:UI Services",
-    carbs: "student moduke",
-    protein: 3.0,
-    billable: "Yes",
-  },
-  {
-    activity: "11/01/2020",
-    calories: "Cosmas Majachani",
-    fat: "Off-Shore:UI Services",
-    carbs: "student moduke",
-    protein: 7.0,
-    billable: "No",
-  },
-  {
-    activity: "11/01/2020",
-    calories: "Cosmas Majachani",
-    fat: "Off-Shore:UI Services",
-    carbs: "student moduke",
-    protein: 7.0,
-    billable: "No",
-  },
-  {
-    activity: "11/01/2020",
-    calories: "Cosmas Majachani",
-    fat: "Off-Shore:UI Services",
-    carbs: "student moduke",
-    protein: 7.0,
-    billable: "No",
-  },
-];
-
 export default function Report() {
   const classes = useStyles();
 
   const [rowData, setRowData] = React.useState([]);
 
+  const rows = useSelector((state) => state.reportReducer.rows);
+  const dispatch = useDispatch();
   const getReport = () => {
     axios
       .get("/user", {
@@ -107,6 +53,7 @@ export default function Report() {
   React.useEffect(() => {
     console.log("Run useEffect");
     getReport();
+    dispatch(getReportData());
   }, []);
 
   const exportAsPdf = () => {

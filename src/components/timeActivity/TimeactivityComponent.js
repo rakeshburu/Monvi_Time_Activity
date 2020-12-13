@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Divider,
   Typography,
@@ -7,13 +7,13 @@ import {
   TextField,
   Input,
   Grid,
-  Box
-} from '@material-ui/core';
-import Page from 'src/components/Page';
-import logo from '../../images/reloadtime-circle-512.png';
-import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
-import { timeActivityStyle } from './TimeactivityStyle';
+  Box,
+} from "@material-ui/core";
+import Page from "src/components/Page";
+import logo from "../../images/reloadtime-circle-512.png";
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
+import { timeActivityStyle } from "./TimeactivityStyle";
 
 const useStyles = makeStyles(() => timeActivityStyle);
 
@@ -43,7 +43,7 @@ export default function Timeactivity() {
                 type="date"
                 className={classes.textField}
                 InputLabelProps={{
-                  shrink: true
+                  shrink: true,
                 }}
               />
             </Grid>
@@ -62,8 +62,8 @@ export default function Timeactivity() {
             <Checkbox
               checked="true"
               // onChange={handleChange}
-              inputProps={{ 'aria-label': 'primary checkbox' }}
-            />{' '}
+              inputProps={{ "aria-label": "primary checkbox" }}
+            />{" "}
             <label>Billable</label>
           </Grid>
           <Grid item xs={6}>

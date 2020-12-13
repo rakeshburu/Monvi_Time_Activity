@@ -1,21 +1,41 @@
-import { INCREMENT, DECREMENT } from '../typeConstants';
+import { GET_REPORT_DATA } from "../typeConstants";
 
 const INITIAL_STATE = {
-  count: 0
+  rows: [],
+  rowData: [
+    {
+      activity: "11/01/2020",
+      calories: "Cosmas Majachani",
+      fat: "Off-Shore:No of Hours Worked",
+      carbs: "student moduke",
+      protein: 4.0,
+      billable: "Yes",
+    },
+    {
+      activity: "11/01/2020",
+      calories: "Cosmas Majachani",
+      fat: "Off-Shore:UI Services",
+      carbs: "student moduke",
+      protein: 6.0,
+      billable: "Yes",
+    },
+    {
+      activity: "11/01/2020",
+      calories: "Cosmas Majachani",
+      fat: "Off-Shore:No of Hours Worked",
+      carbs: "student moduke",
+      protein: 9.0,
+      billable: "No",
+    },
+  ],
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case INCREMENT:
+    case GET_REPORT_DATA:
       return {
         ...state,
-        count: state.count + 1
-      };
-
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - 1
+        rows: state.rowData,
       };
 
     default:

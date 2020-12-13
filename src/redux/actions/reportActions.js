@@ -1,13 +1,7 @@
-import { INCREMENT, DECREMENT } from './counter.types';
+import { GET_REPORT_DATA } from "../typeConstants";
 
-export const increaseCounter = () => {
+export const getReportData = () => {
   return {
-    type: INCREMENT
-  };
-};
-
-export const decreaseCounter = () => {
-  return {
-    type: DECREMENT
+    type: GET_REPORT_DATA,
   };
 };

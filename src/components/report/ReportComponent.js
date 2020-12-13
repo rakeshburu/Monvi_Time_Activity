@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { CSVLink } from 'react-csv';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import { CSVLink } from "react-csv";
+import moment from "moment";
 import {
   Box,
   Divider,
@@ -15,22 +15,22 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper
-} from '@material-ui/core';
-import ImportExportIcon from '@material-ui/icons/ImportExport';
-import PrintIcon from '@material-ui/icons/Print';
-import { reportStyle } from './ReportStyle';
+  Paper,
+} from "@material-ui/core";
+import ImportExportIcon from "@material-ui/icons/ImportExport";
+import PrintIcon from "@material-ui/icons/Print";
+import { reportStyle } from "./ReportStyle";
 
 const useStyles = makeStyles(() => reportStyle);
 
 const ReportData = ({ exportAsPdf, printTable, data, headers }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const anchorElHandleClick = event => {
+  const anchorElHandleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popper' : undefined;
+  const id = open ? "simple-popper" : undefined;
   return (
     <>
       <Grid item xs={12}>
@@ -71,7 +71,7 @@ const ReportData = ({ exportAsPdf, printTable, data, headers }) => {
               color="textSecondary"
               variant="body1"
             >
-              Activity:{`${moment().format(' MMMM Do YYYY')}`}
+              Activity:{`${moment().format(" MMMM Do YYYY")}`}
             </Typography>
           </Box>
           <Typography color="textSecondary" variant="body1">
@@ -98,7 +98,7 @@ const ReportData = ({ exportAsPdf, printTable, data, headers }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map(row => (
+            {data.map((row) => (
               <TableRow key={row.activity}>
                 <TableCell component="th" scope="row">
                   {row.activity}
@@ -118,7 +118,7 @@ const ReportData = ({ exportAsPdf, printTable, data, headers }) => {
 };
 
 ReportData.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ReportData;

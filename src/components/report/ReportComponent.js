@@ -99,14 +99,14 @@ const ReportData = ({ exportAsPdf, printTable, data, headers }) => {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <TableRow key={row.activity}>
+              <TableRow key={row.date}>
                 <TableCell component="th" scope="row">
-                  {row.activity}
+                  {row.date}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">{row.customer_name}</TableCell>
+                <TableCell align="right">{row.service_name}</TableCell>
+                <TableCell align="right">{row.description}</TableCell>
+                <TableCell align="right">{row.time}</TableCell>
                 <TableCell align="right">{row.billable}</TableCell>
               </TableRow>
             ))}

@@ -20,11 +20,11 @@ const useStyles = makeStyles({
 
 const headers = [
   { label: "Activity Date", key: "activity" },
-  { label: "Customer", key: "calories" },
-  { label: "Product", key: "fat" },
-  { label: "Memo", key: "carbs" },
-  { label: "Duration", key: "protein" },
-  { label: "Billable", key: "billable" },
+  { label: "Customer", key: "customer_name" },
+  { label: "Product", key: "service_name" },
+  { label: "Memo", key: "description" },
+  { label: "Duration", key: "time" },
+  { label: "Billable", key: "billable" }
 ];
 
 export default function Report() {
@@ -36,14 +36,14 @@ export default function Report() {
   const dispatch = useDispatch();
   const getReport = () => {
     axios
-      .get("/user", {
+      .get("http://localhost:5000/api/timeactivity", {
         params: {
           ID: 12345,
         },
       })
       .then(function(response) {
         console.log(response);
-        setRowData(response);
+        setRowData(response.data.result);
       })
       .catch(function(error) {
         console.log(error);
@@ -83,7 +83,7 @@ export default function Report() {
           exportAsPdf={exportAsPdf}
           printTable={printTable}
           headers={headers}
-          data={rows}
+          data={rowData}
         />
       </Grid>
     </Page>

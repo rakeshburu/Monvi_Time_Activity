@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 const headers = [
-  { label: "Activity Date", key: "activity" },
+  { label: "Activity Date", key: "date" },
   { label: "Customer", key: "customer_name" },
   { label: "Product", key: "service_name" },
   { label: "Memo", key: "description" },
@@ -29,17 +29,12 @@ const headers = [
 
 export default function Report() {
   const classes = useStyles();
-
   const [rowData, setRowData] = React.useState([]);
-
   const rows = useSelector((state) => state.reportReducer.rows);
   const dispatch = useDispatch();
   const getReport = () => {
     axios
       .get("http://localhost:5000/api/timeactivity", {
-        params: {
-          ID: 12345,
-        },
       })
       .then(function(response) {
         console.log(response);

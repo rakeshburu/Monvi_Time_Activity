@@ -92,10 +92,10 @@ const Ticketactivity = () => {
           <TableHead>
             <TableRow>
               <StyledTableCell />
-              <StyledTableCell align="right"> Ticket_id</StyledTableCell>
-              <StyledTableCell align="right">AssignedTo</StyledTableCell>
-              <StyledTableCell align="right">Date</StyledTableCell>
-              <StyledTableCell align="right">Status</StyledTableCell>
+              <StyledTableCell align="left">Ticket_id</StyledTableCell>
+              <StyledTableCell align="left">AssignedTo</StyledTableCell>
+              <StyledTableCell align="left">Date</StyledTableCell>
+              <StyledTableCell align="left">Status</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>          
@@ -136,12 +136,12 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row" align="left">
           {row.ticket_id}
         </TableCell>
-        <TableCell align="right">{row.ticket_assignedto}</TableCell>
-        <TableCell align="right">{row.ticket_createddate}</TableCell>
-        <TableCell align="right">{row.ticket_status}</TableCell>
+        <TableCell align="left">{row.ticket_assignedto}</TableCell>
+        <TableCell align="left">{row.ticket_createddate}</TableCell>
+        <TableCell align="left">{row.ticket_status}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

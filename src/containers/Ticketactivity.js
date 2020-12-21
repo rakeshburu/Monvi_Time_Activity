@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getTicketActivityData,
   getRowFilterToEdit,
+  setTicketRowData,
 } from "../redux/actions/ticketActivityActions";
 
 const useStyles = makeStyles((theme) => ({
@@ -87,18 +88,19 @@ const Ticketactivity = () => {
     dispatch(getTicketActivityData());
   };
 
-  const getReport = () => {
+  const getTicketData = () => {
     Axios.get("http://localhost:5000/ticket")
       .then(function(response) {
         console.log("response", response);
         setData(response.data.result);
+        setTicketRowData(response.data.result);
       })
       .catch(function(error) {
         console.log(error);
       });
   };
   React.useEffect(() => {
-    getReport();
+    getTicketData();
   }, []);
   return (
     <Page className={classes.root} title="Ticketactivity">
@@ -128,33 +130,6 @@ const Ticketactivity = () => {
                     row={row}
                     handleEdit={handleEdit}
                   />
-                  {/* <StyledTableRow key={row.date}>
-                    <TableCell>
-                      <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => setOpen(!open)}
-                      >
-                        {open ? (
-                          <KeyboardArrowUpIcon />
-                        ) : (
-                          <KeyboardArrowDownIcon />
-                        )}
-                      </IconButton>
-                    </TableCell>
-                    <StyledTableCell align="right" component="th" scope="row">
-                      {row.ticket_id}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {row.ticket_assignedto}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {row.ticket_createddate}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {row.ticket_status}
-                    </StyledTableCell>
-                  </StyledTableRow> */}
                 </>
               ))}
             </TableBody>

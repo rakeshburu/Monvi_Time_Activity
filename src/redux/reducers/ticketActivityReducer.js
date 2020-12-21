@@ -2,6 +2,7 @@ import {
   GET_TIME_ACTIVITY_DATA,
   GET_ROW_FILTER,
   UPDATE_TICKET_ROW_DATA,
+  SET_TICKET_ACTIVITY_DATA,
 } from "../typeConstants";
 
 const INITIAL_STATE = {
@@ -9,24 +10,34 @@ const INITIAL_STATE = {
   filteredRow: [],
   timeActivityRowData: [
     {
-      ticket_id: "9867888",
-      ticket_assignedto: "Sai",
-      ticket_createddate: "1-2-2020",
-      ticket_status: "Open",
-      user_name: "XYZ",
-      email: "t@t.com",
-      ticket_updateddate: "10-20-2020",
-      ticket_content: "The The The",
+      user_name: "Sairamreddy",
+      email: "xyz@gmail.com",
+      ticket_id: "123456",
+      ticket_content: "Not able to get the allowence",
+      ticket_area: "Payrolle",
+      ticket_attachments: null,
+      comments: null,
+      ticket_createddate: "2020-11-12",
+      ticket_updateddate: null,
+      ticket_status: "Raised",
+      ticket_resolution: null,
+      ticket_assignedto: "Lohith",
+      ticket_createdby: "Sairamreddy",
     },
     {
-      ticket_id: "9867899",
-      ticket_assignedto: "Lohith",
-      ticket_createddate: "3-7-2020",
-      ticket_status: "Pending",
-      user_name: "ABC",
-      email: "test@test.com",
-      ticket_updateddate: "10-20-2020",
-      ticket_content: "The The The",
+      user_name: "Sai",
+      email: "xyz@gmail.com",
+      ticket_id: "123456",
+      ticket_content: "Not able to get the allowence",
+      ticket_area: "Payrolle",
+      ticket_attachments: null,
+      comments: null,
+      ticket_createddate: "2020-11-12",
+      ticket_updateddate: null,
+      ticket_status: "Raised",
+      ticket_resolution: null,
+      ticket_assignedto: "Rakesh",
+      ticket_createdby: "Sairamreddy",
     },
   ],
 };
@@ -37,6 +48,11 @@ const ticketActivityReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         rows: state.timeActivityRowData,
+      };
+    case SET_TICKET_ACTIVITY_DATA:
+      return {
+        ...state,
+        rows: action.data,
       };
     case GET_ROW_FILTER:
       return {

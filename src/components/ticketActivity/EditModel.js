@@ -5,8 +5,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Dialog from "@material-ui/core/Dialog";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTicketRowData } from "../../redux/actions/ticketActivityActions";
+import {
+  updateTicketRowData,
+  setTicketRowData,
+} from "../../redux/actions/ticketActivityActions";
 
 import { TextField, Input, Grid, Select } from "@material-ui/core";
 
@@ -45,8 +49,19 @@ function EditModel(props) {
     console.log("event", event.target.value);
     setUpdateRow({ ...updateRow, [event.target.name]: event.target.value });
   };
-  const handleOk = () => {
+  const handleSave = () => {
+    /* UI side updation --- for temporary --- */
     dispatch(updateTicketRowData(updateRow));
+    /* API side updation */
+    axios
+      .post("http://localhost:5000/ticket/", updateRow)
+      .then(function(response) {
+        console.log(response);
+        setTicketRowData(response.data.result);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
     onClose();
   };
 
@@ -112,7 +127,7 @@ function EditModel(props) {
         <Button autoFocus onClick={handleCancel} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleOk} color="primary">
+        <Button onClick={handleSave} color="primary">
           Save
         </Button>
       </DialogActions>

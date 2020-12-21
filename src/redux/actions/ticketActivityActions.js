@@ -2,6 +2,7 @@ import {
   GET_TIME_ACTIVITY_DATA,
   GET_ROW_FILTER,
   UPDATE_TICKET_ROW_DATA,
+  SET_TICKET_ACTIVITY_DATA,
 } from "../typeConstants";
 
 export const getTicketActivityData = () => {
@@ -19,5 +20,11 @@ export const updateTicketRowData = (updatedRow) => {
   return {
     type: UPDATE_TICKET_ROW_DATA,
     updatedRow: updatedRow,
+  };
+};
+export const setTicketRowData = (data) => {
+  return {
+    type: SET_TICKET_ACTIVITY_DATA,
+    data: data,
   };
 };

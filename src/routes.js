@@ -12,6 +12,7 @@ import RegisterView from "src/views/auth/RegisterView";
 import SettingsView from "src/views/settings/SettingsView";
 import Report from "src/containers/Report";
 import Timeactivity from "src/containers/Timeactivity";
+import Ticketactivity from "src/containers/Ticketactivity";
 
 const routes = [
   {
@@ -23,6 +24,7 @@ const routes = [
       { path: "dashboard", element: <DashboardView /> },
       { path: "products", element: <Timeactivity /> },
       { path: "settings", element: <SettingsView /> },
+      { path: 'Ticketactivity', element: <Ticketactivity /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },

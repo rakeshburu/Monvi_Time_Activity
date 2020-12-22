@@ -28,7 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getTicketActivityData,
   getRowFilterToEdit,
-  setTicketRowData,
+  getTicketRowData,
 } from "../redux/actions/ticketActivityActions";
 
 const useStyles = makeStyles((theme) => ({
@@ -73,9 +73,9 @@ const Ticketactivity = () => {
   const rows = useSelector((state) => state.ticketActivityReducer.rows);
   console.log("rows:::", rows);
 
-  React.useEffect(() => {
-    dispatch(getTicketActivityData());
-  }, [rows]);
+  // React.useEffect(() => {
+  //   dispatch(getTicketActivityData());
+  // }, [rows]);
 
   const handleEdit = (rowVal) => {
     var Cells = rowVal.current.getElementsByTagName("td");
@@ -88,19 +88,19 @@ const Ticketactivity = () => {
     dispatch(getTicketActivityData());
   };
 
-  const getTicketData = () => {
-    Axios.get("http://localhost:5000/ticket")
-      .then(function(response) {
-        console.log("response", response);
-        setData(response.data.result);
-        setTicketRowData(response.data.result);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+  // const getTicketData = () => {
+  //   Axios.get("http://localhost:5000/ticket")
+  //     .then(function(response) {
+  //       console.log("response", response);
+  //       setData(response.data.result);
+  //       //getTicketRowData(response.data.result);
+  //     })
+  //     .catch(function(error) {
+  //       console.log(error);
+  //     });
+  // };
   React.useEffect(() => {
-    getTicketData();
+    getTicketRowData();
   }, []);
   return (
     <Page className={classes.root} title="Ticketactivity">

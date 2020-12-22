@@ -57,7 +57,7 @@ function EditModel(props) {
       .post("http://localhost:5000/ticket/", updateRow)
       .then(function(response) {
         console.log(response);
-        setTicketRowData(response.data.result);
+        //setTicketRowData(response.data.result);
       })
       .catch(function(error) {
         console.log(error);

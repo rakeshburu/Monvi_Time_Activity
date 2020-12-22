@@ -2,7 +2,7 @@ import {
   GET_TIME_ACTIVITY_DATA,
   GET_ROW_FILTER,
   UPDATE_TICKET_ROW_DATA,
-  SET_TICKET_ACTIVITY_DATA,
+  GET_TICKET_DATA_SUCCESS,
 } from "../typeConstants";
 
 const INITIAL_STATE = {
@@ -49,10 +49,10 @@ const ticketActivityReducer = (state = INITIAL_STATE, action) => {
         ...state,
         rows: state.timeActivityRowData,
       };
-    case SET_TICKET_ACTIVITY_DATA:
+    case GET_TICKET_DATA_SUCCESS:
       return {
         ...state,
-        rows: action.data,
+        rows: action.response.data.result,
       };
     case GET_ROW_FILTER:
       return {

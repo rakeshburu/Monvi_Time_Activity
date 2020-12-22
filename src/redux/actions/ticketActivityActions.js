@@ -2,8 +2,11 @@ import {
   GET_TIME_ACTIVITY_DATA,
   GET_ROW_FILTER,
   UPDATE_TICKET_ROW_DATA,
-  SET_TICKET_ACTIVITY_DATA,
+  GET_TICKET_ACTIVITY_DATA,
+  GET_TICKET_DATA_SUCCESS,
+  GET_TICKET_DATA_FAILURE,
 } from "../typeConstants";
+import Axios from "axios";
 
 export const getTicketActivityData = () => {
   return {
@@ -22,9 +25,13 @@ export const updateTicketRowData = (updatedRow) => {
     updatedRow: updatedRow,
   };
 };
-export const setTicketRowData = (data) => {
-  return {
-    type: SET_TICKET_ACTIVITY_DATA,
-    data: data,
+
+export const getTicketRowData = () => {
+  return (dispatch) => {
+    dispatch({ type: GET_TICKET_ACTIVITY_DATA });
+    return Axios.get("http://localhost:5000/ticket").then(
+      (response) => dispatch({ type: GET_TICKET_DATA_SUCCESS, response }),
+      (err) => dispatch({ type: GET_TICKET_DATA_FAILURE, err })
+    );
   };
 };

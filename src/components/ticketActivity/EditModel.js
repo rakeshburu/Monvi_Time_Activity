@@ -7,10 +7,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Dialog from "@material-ui/core/Dialog";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  updateTicketRowData,
-  setTicketRowData,
-} from "../../redux/actions/ticketActivityActions";
+import { updateTicketRowData } from "../../redux/actions/ticketActivityActions";
 
 import { TextField, Input, Grid, Select } from "@material-ui/core";
 
@@ -50,18 +47,7 @@ function EditModel(props) {
     setUpdateRow({ ...updateRow, [event.target.name]: event.target.value });
   };
   const handleSave = () => {
-    /* UI side updation --- for temporary --- */
     dispatch(updateTicketRowData(updateRow));
-    /* API side updation */
-    axios
-      .post("http://localhost:5000/ticket/", updateRow)
-      .then(function(response) {
-        console.log(response);
-        //setTicketRowData(response.data.result);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
     onClose();
   };
 
@@ -111,14 +97,14 @@ function EditModel(props) {
         </Grid>
 
         <Grid xs={12} className={classes.inputFieldStyle}>
-          <label className={classes.discriptionLabel}>Description</label>
+          <label className={classes.discriptionLabel}>comments</label>
           <TextField
             id="standard-multiline-static"
             multiline
             rows={4}
             variant="outlined"
-            value={updateRow.ticket_content}
-            name="ticket_content"
+            value={updateRow.comments}
+            name="comments"
             onChange={handleOnchageValue}
           />
         </Grid>

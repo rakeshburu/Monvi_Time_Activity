@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Container,
-  Grid,
   Table,
   TableBody,
   TableCell,
@@ -9,24 +8,14 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Typography,
-  Button,
 } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Page from "src/components/Page";
 import Toolbar from "./Toolbar";
-import Axios from "axios";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import IconButton from "@material-ui/core/IconButton";
-import Box from "@material-ui/core/Box";
-import Collapse from "@material-ui/core/Collapse";
-import EditIcon from "@material-ui/icons/Edit";
 import EditModel from "../components/ticketActivity/EditModel";
 import TicketActivityRow from "../components/ticketActivity/TicketActivityRow";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getTicketActivityData,
   getRowFilterToEdit,
   getTicketRowData,
 } from "../redux/actions/ticketActivityActions";
@@ -68,14 +57,9 @@ const Ticketactivity = () => {
     { label: "Status", key: "ticket_status" },
   ];
 
-  const [Data, setData] = React.useState([]);
   const [openEditModel, setOpenopenEditModel] = React.useState(false);
   const rows = useSelector((state) => state.ticketActivityReducer.rows);
   console.log("rows:::", rows);
-
-  // React.useEffect(() => {
-  //   dispatch(getTicketActivityData());
-  // }, [rows]);
 
   const handleEdit = (rowVal) => {
     var Cells = rowVal.current.getElementsByTagName("td");
@@ -85,22 +69,10 @@ const Ticketactivity = () => {
 
   const handleClose = (newValue) => {
     setOpenopenEditModel(false);
-    dispatch(getTicketActivityData());
   };
 
-  // const getTicketData = () => {
-  //   Axios.get("http://localhost:5000/ticket")
-  //     .then(function(response) {
-  //       console.log("response", response);
-  //       setData(response.data.result);
-  //       //getTicketRowData(response.data.result);
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // };
   React.useEffect(() => {
-    getTicketRowData();
+    dispatch(getTicketRowData());
   }, []);
   return (
     <Page className={classes.root} title="Ticketactivity">

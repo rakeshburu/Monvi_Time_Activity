@@ -1,5 +1,5 @@
 import {
-  GET_TIME_ACTIVITY_DATA,
+  GET_TICKET_ACTIVITY_DATA,
   GET_ROW_FILTER,
   UPDATE_TICKET_ROW_DATA,
   GET_TICKET_DATA_SUCCESS,
@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   filteredRow: [],
   timeActivityRowData: [
     {
-      user_name: "Sairamreddy",
+      user_name: "Dummy",
       email: "xyz@gmail.com",
       ticket_id: "123456",
       ticket_content: "Not able to get the allowence",
@@ -25,7 +25,7 @@ const INITIAL_STATE = {
       ticket_createdby: "Sairamreddy",
     },
     {
-      user_name: "Sai",
+      user_name: "Dummy",
       email: "xyz@gmail.com",
       ticket_id: "123456",
       ticket_content: "Not able to get the allowence",
@@ -44,7 +44,7 @@ const INITIAL_STATE = {
 
 const ticketActivityReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_TIME_ACTIVITY_DATA:
+    case GET_TICKET_ACTIVITY_DATA:
       return {
         ...state,
         rows: state.timeActivityRowData,
@@ -57,15 +57,12 @@ const ticketActivityReducer = (state = INITIAL_STATE, action) => {
     case GET_ROW_FILTER:
       return {
         ...state,
-        filteredRow: rowFilterById(state.timeActivityRowData, action.rowId),
+        filteredRow: rowFilterById(state.rows, action.rowId),
       };
     case UPDATE_TICKET_ROW_DATA:
       return {
         ...state,
-        timeActivityRowData: updateRowValue(
-          state.timeActivityRowData,
-          action.updatedRow
-        ),
+        rows: updateRowValue(state.rows, action.updatedRow),
       };
 
     default:
